@@ -1,23 +1,61 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101010"><title>Agendamentos | MSuedy Barber</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101010">
+<title>Agendamentos | MSuedy Barber</title>
+<link rel="icon" href="data:,">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script defer src="app.js"></script>
 </head>
 <body>
-<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">M</span><span>MSUEDY <b>BARBER</b></span></a><a class="admin-link" href="index.html">← Tela de agendamento</a></header>
+<header class="site-header">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MSUEDY <b>BARBER</b></span></a>
+  <a class="admin-link" href="index.html">← Tela de agendamento</a>
+</header>
+
 <main class="admin-layout">
   <section id="dashboardPanel" class="panel dashboard-panel">
-    <div class="dashboard-heading"><div><div class="eyebrow">MSUEDY BARBER</div><h1>Agendamentos</h1><p class="muted">Visualize e gerencie as reservas da barbearia.</p></div><a class="secondary-btn link-btn" href="index.html">Novo agendamento</a></div>
+    <div class="dashboard-heading">
+      <div>
+        <div class="eyebrow">MSUEDY BARBER</div>
+        <h1>Agendamentos</h1>
+        <p class="muted">Visualize e gerencie as reservas da barbearia.</p>
+      </div>
+      <a class="secondary-btn link-btn" href="index.html">Novo agendamento</a>
+    </div>
+
     <div id="dashboardNotice" class="notice" role="status"></div>
-    <div class="filters"><div><label for="filterDate">Filtrar por data</label><input id="filterDate" type="date"></div><button id="todayBtn" class="secondary-btn">Hoje</button><button id="allBtn" class="secondary-btn">Próximos 30 dias</button><button id="refreshBtn" class="secondary-btn">Atualizar</button></div>
-    <div class="stats"><div class="stat"><span>Agendamentos exibidos</span><b id="countBookings">0</b></div><div class="stat"><span>Próximo atendimento</span><b id="nextBooking">—</b></div></div>
-    <div id="bookingTableWrap" class="table-wrap"><p class="muted">Carregando agendamentos...</p></div>
-    <p class="small muted footnote">Atenção: esta tela não exige login. Qualquer pessoa que tiver o link poderá visualizar e cancelar agendamentos. Para manter os dados dos clientes protegidos, não publique este link abertamente.</p>
+
+    <div class="filters">
+      <div>
+        <label for="filterDate">Filtrar por data</label>
+        <input id="filterDate" type="date">
+      </div>
+      <button id="todayBtn" class="secondary-btn">Hoje</button>
+      <button id="allBtn" class="secondary-btn">Próximos 30 dias</button>
+      <button id="refreshBtn" class="secondary-btn">Atualizar</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span>Agendamentos exibidos</span><b id="countBookings">0</b></div>
+      <div class="stat"><span>Próximo atendimento</span><b id="nextBooking">—</b></div>
+    </div>
+
+    <div id="bookingTableWrap" class="table-wrap">
+      <p class="muted">Carregando agendamentos...</p>
+    </div>
+
+    <p class="small muted footnote">
+      Atenção: esta tela não exige login. Qualquer pessoa que tiver o link poderá
+      visualizar e cancelar agendamentos. Para manter os dados dos clientes
+      protegidos, não publique este link abertamente.
+    </p>
   </section>
 </main>
+
 <footer>© <span id="year"></span> MSuedy Barber · Visualização de agendamentos</footer>
-</body></html>
+</body>
+</html>

@@ -1,0 +1,43 @@
+MSUEDY BARBER — SITE DE AGENDAMENTO + PAINEL ADMINISTRATIVO
+
+ARQUIVOS
+- index.html: tela pública de agendamento dos clientes
+- admin.html: tela de visualização/gerenciamento dos agendamentos, sem login
+- app.js: URL/public key do Supabase e toda a lógica do frontend
+- style.css: estilos
+- supabase_setup.sql: criação das tabelas, funções RPC e políticas RLS
+
+CONFIGURAÇÃO
+1. Abra app.js e preencha:
+   const SUPABASE_URL = "https://SEU-PROJETO.supabase.co";
+   const SUPABASE_ANON_KEY = "SUA_PUBLISHABLE_KEY";
+   Use a URL do projeto e a chave publishable/public (sb_publishable_...). Nunca use service_role/secret key no navegador.
+
+2. No Supabase Dashboard, abra SQL Editor e execute todo o conteúdo de supabase_setup.sql.
+
+3. Crie a conta do proprietário em Authentication > Users (por convite ou criação administrativa). Não crie cadastro público de admin.
+
+4. Sirva a pasta por um servidor local, em vez de abrir file://, por exemplo:
+   - VS Code: extensão Live Server
+   - Python instalado: python -m http.server 8000
+   Depois abra http://localhost:8000
+
+5. Tela de agendamento: http://localhost:8000/index.html
+   Tela de agendamentos: http://localhost:8000/admin.html
+
+COMPORTAMENTO
+- Segunda a sexta: inícios de atendimento de hora em hora, 18:00 a 23:00.
+- Sábado: 08:00 a 16:00 (o último atendimento termina às 17:00).
+- Domingo: fechado.
+- A duração reservada é de 1 hora.
+- O site consulta os horários ocupados e cria a reserva via funções RPC no Supabase.
+- O painel não exige login; qualquer pessoa com o link poderá ver e cancelar agendamentos.
+- O administrador consegue filtrar datas, consultar clientes e cancelar reservas.
+- Reservas canceladas não bloqueiam o horário novamente.
+
+IMPORTANTE
+- Horários de segunda a sexta incluem 23:00 como início, conforme a interpretação de “a partir das 18h”. Se a barbearia fechar antes da meia-noite, ajuste os horários no app.js e na função SQL.
+- O navegador precisa de internet para usar Supabase.
+- Configure políticas e teste em um projeto Supabase de desenvolvimento antes de publicar.
+
+AVISO DE PRIVACIDADE: como você pediu para não ter login, a tela admin não é realmente privada. A política SQL permite que qualquer visitante que tenha o link veja nome, telefone, serviço, data e horário e cancele reservas. Não divulgue o link publicamente. Se quiser proteger os dados, o ideal é exigir login ou separar uma tela de visualização com dados minimizados.
