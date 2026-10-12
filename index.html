@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101010"><title>MSuedy Barber | Agendamento</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MSUEDY <b>BARBER</b></span></a>
+  <a class="admin-link" href="admin.html">Área do administrador ↗</a>
+</header>
+<main class="layout">
+  <section class="booking-card panel">
+    <div class="eyebrow">AGENDE SEU HORÁRIO</div>
+    <h1>Seu estilo.<br><span>Seu momento.</span></h1>
+    <p class="muted">Escolha o serviço, o dia e o horário com o barbeiro MSuedy.</p>
+    <div id="notice" class="notice" role="status"></div>
+    <form id="bookingForm">
+      <label for="nome">Nome completo</label><input id="nome" name="nome" autocomplete="name" maxlength="100" required placeholder="Digite seu nome">
+      <label for="telefone">WhatsApp</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" maxlength="25" required placeholder="(31) 99999-9999">
+      <label for="servico">Serviço</label>
+      <select id="servico" name="servico" required>
+        <option value="Corte de cabelo">Corte de cabelo — aprox. 1 hora</option>
+        <option value="Barba">Barba — aprox. 1 hora</option>
+        <option value="Cabelo + barba">Cabelo + barba — aprox. 1 hora</option>
+      </select>
+      <label for="data">Data do atendimento</label><input id="data" name="data" type="date" required>
+      <div class="field-heading"><label>Horários disponíveis</label><span class="small muted">1 hora por atendimento</span></div>
+      <div id="slots" class="slots"><p class="muted small">Selecione uma data para consultar os horários.</p></div>
+      <button id="submitBtn" class="primary-btn" type="submit" disabled>Confirmar agendamento</button>
+    </form>
+    <p class="small muted footnote">Ao confirmar, seus dados serão enviados para o sistema de agendamento da barbearia.</p>
+  </section>
+  <aside class="side-column">
+    <div class="panel intro-panel"><div class="round-scissors">✂</div><div class="eyebrow">MSUEDY BARBER</div><h2>Visual alinhado.<br>Atendimento no horário.</h2><p class="muted">Faça sua reserva online em poucos passos.</p></div>
+    <div class="panel hours-panel"><h2>Horários de atendimento</h2>
+      <div class="hours-row"><span>Segunda a sexta</span><b>A partir das 18h</b></div>
+      <div class="hours-row"><span>Sábado</span><b>08h às 17h</b></div>
+      <div class="hours-row"><span>Domingo</span><b class="closed">Fechado</b></div>
+      <p class="small muted">Os horários exibidos indicam o início do atendimento. O último horário de sábado começa às 16h.</p>
+    </div>
+  </aside>
+</main>
+<footer>© <span id="year"></span> MSuedy Barber · Agendamento online</footer>
+</body></html>
